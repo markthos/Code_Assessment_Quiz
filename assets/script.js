@@ -59,7 +59,35 @@ function showQuestion() {
     }
 }
 
-//function submitAnswer(){}
+function submitAnswer() {
+    var answer = document.getElementById("answer" + currentQuestion).value;
+    if (answer == questions[currentQuestion].correctAnswer) {
+      currentQuestion++;
+      if (currentQuestion < questions.length) {
+        showQuestion();
+      } else {
+        endQuiz();
+      }
+    } else {
+      timer--;
+    }
+}
+
+function endQuiz() {
+    alert("Quiz is over!");
+    document.getElementById("start").disabled = true;
+    document.getElementById("submit").disabled = true;
+    var input = document.createElement("input");
+    input.type = "text";
+    input.name = "initials";
+    input.id = "initials";
+    document.getElementById("question").appendChild(input);
+    var input = document.createElement("input");
+    input.type = "number";
+    input.name = "score";
+    input.id = "score";
+    document.getElementById("question").appendChild(input);
+}
 
 startButton.addEventListener("click", startQuiz);
-//submitButton.addEventListener("click", submitAnswer);
+submitButton.addEventListener("click", submitAnswer);
