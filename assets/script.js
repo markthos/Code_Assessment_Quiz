@@ -50,14 +50,20 @@ function showQuestion() {
     var question = questions[currentQuestion];
     document.getElementById("question-container").innerHTML = question.question;
     for (var i = 0; i < question.answers.length; i++) {
-        var answer = document.createElement("input");
-        answer.type = "radio";
-        answer.name = "question";
-        answer.value = question.answers[i];
-        answer.id = "answer" + i;
-        document.getElementById("question-container").appendChild(answer); 
+        var answer = document.createElement("label");
+        var radio =document.createElement("input");
+        radio.type = "radio";
+        radio.name = "question";
+        radio.value = question.answers[i];
+        radio.id = "answer" + i;
+        answer.appendChild(radio);
+        var span = document.createElement("span");
+        span.innerHTML = question.answers[i];
+        answer.appendChild(span);
+        document.getElementById("question-container").appendChild(answer);
     }
 }
+
 
 function submitAnswer() {
     var answer = document.getElementById("answer" + currentQuestion).value;
