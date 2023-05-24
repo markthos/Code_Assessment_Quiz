@@ -8,15 +8,16 @@
     <link rel="stylesheet" type="text/css" href="assets\style.css"/>
 </head>
 <body>
-    <header>
-        <h1>Code Assessment Quiz</h1>
-        <button id="start-button">Start</button>
-
-    </header>
+    <div class="container">
+        <header>
+            <h1>Code Assessment Quiz</h1>
+            <div class ="score">Score: <span id ="score">0</span></div>
+            <div class ="timer">Time: <span id ="time">60</span></div>
+        </header>
+    </div>
     <main>
+        <button id="start-button">Start</button>
         <div id="question-container"></div>
-        <div id="time-container"></div>
-        <div id="score-container"></div>
         <button id="submit-button">Submit</button>
     </main>
 

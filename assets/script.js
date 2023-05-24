@@ -11,29 +11,29 @@ var questions = [
     {
         question: 'What characters do you use to create an in-line comment?',
         answers: ['//', 'n/', '/**/'],
-        correctAnswer: '//'
+        correctAnswer: '//',
     },
     {
         question: 'Which code is a Jquery operation?',
         answers: ['document.queryselectAll("#root")', '$("#root")', 'document.getElementById("#root")'],
-        correctAnswer: '$("#root")'
+        correctAnswer: '$("#root")',
     },
     {
         question: 'Which of these uses LIFO to access, store, and retrieve data?',
         answers: ['Queue', 'Array', 'Stack'],
-        correctAnswer: 'Stack'
+        correctAnswer: 'Stack',
     },
     {
         question: 'Which of these are a non-linear data structure?',
         answers: ['Trees', 'Arrays', 'Stacks'],
-        correctAnswer: 'Trees'
+        correctAnswer: 'Trees',
     },
     {
         question: 'In OOPS which concept refers to the wrapping of code and data together into a single unit',
         answers: ['Inheritance', 'Encapsulation', 'Polymorphism'],
-        correctAnswer: 'Encapsulation'
-    }
-]
+        correctAnswer: 'Encapsulation',
+    },
+];
 //declare variables for quiz functions
 var currentQuestion = 0;
 var timer = 0;
