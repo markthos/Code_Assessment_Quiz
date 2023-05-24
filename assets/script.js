@@ -1,12 +1,11 @@
+// pull html elements into usable variables
+var startButton = document.getElementById("start-button");
+var questionContainer = document.getElementById("question-container");
+var timeContainer = document.getElementById("time");
+var scoreContainer = document.getElementById("score");
+var submitButton = document.getElementById("submit-button");
 
-//pull html elements into usable variables
-var startButton = document.getElementById ("start-button");
-var questionContainer = document.getElementById ("question-container");
-var timeContainer = document.getElementById ("time-container");
-var scoreContainer = document.getElementById ("score-container");
-var submitButton =document.getElementById("submit-button");
-
-//create question objects with content, answers, and correct answers for quiz
+// create question objects with content, answers, and correct answers for quiz
 var questions = [
     {
         question: 'What characters do you use to create an in-line comment?',
@@ -34,24 +33,31 @@ var questions = [
         correctAnswer: 'Encapsulation',
     },
 ];
-//declare variables for quiz functions
+// declare variables for quiz functions
 var currentQuestion = 0;
 var timer = 0;
 
-//create function to start quiz with timer at 60 seconds
+// create function to start quiz with timer at 60 seconds
 function startQuiz() {
     timer = 60;
-    console.log(timer);
     showQuestion();
+    var countdown = setInterval(function() {
+        timer--;
+        timeContainer.innerHTML = "Time: " + timer;
+        if (timer <= 0) {
+            endQuiz();
+            clearInterval(countdown);
+        }
+    }, 1000);
 }
 
-//create function to show questions with answer field
+// create function to show questions with answer field
 function showQuestion() {
     var question = questions[currentQuestion];
-    document.getElementById("question-container").innerHTML = question.question;
+    questionContainer.innerHTML = question.question;
     for (var i = 0; i < question.answers.length; i++) {
         var answer = document.createElement("label");
-        var radio =document.createElement("input");
+        var radio = document.createElement("input");
         radio.type = "radio";
         radio.name = "question";
         radio.value = question.answers[i];
@@ -60,39 +66,38 @@ function showQuestion() {
         var span = document.createElement("span");
         span.innerHTML = question.answers[i];
         answer.appendChild(span);
-        document.getElementById("question-container").appendChild(answer);
+        questionContainer.appendChild(answer);
     }
 }
 
-
 function submitAnswer() {
-    var answer = document.getElementById("answer" + currentQuestion).value;
+    var answer = document.querySelector("input[name='question']:checked").value;
     if (answer == questions[currentQuestion].correctAnswer) {
-      currentQuestion++;
-      if (currentQuestion < questions.length) {
-        showQuestion();
-      } else {
-        endQuiz();
-      }
+        currentQuestion++;
+        if (currentQuestion < questions.length) {
+            showQuestion();
+        } else {
+            endQuiz();
+        }
     } else {
-      timer--;
+        timer -= 10;
     }
 }
 
 function endQuiz() {
-    alert("Quiz is over!");
-    document.getElementById("start").disabled = true;
-    document.getElementById("submit").disabled = true;
-    var input = document.createElement("input");
-    input.type = "text";
-    input.name = "initials";
-    input.id = "initials";
-    document.getElementById("question").appendChild(input);
-    var input = document.createElement("input");
-    input.type = "number";
-    input.name = "score";
-    input.id = "score";
-    document.getElementById("question").appendChild(input);
+    questionContainer.innerHTML = "Quiz is over!";
+    startButton.disabled = true;
+    submitButton.disabled = true;
+    var initialsInput = document.createElement("input");
+    initialsInput.type = "text";
+    initialsInput.name = "initials";
+    initialsInput.placeholder = "Enter your initials";
+    questionContainer.appendChild(initialsInput);
+    var scoreInput = document.createElement("input");
+    scoreInput.type = "number";
+    scoreInput.name = "score";
+    scoreInput.placeholder = "Enter your score";
+    questionContainer.appendChild(scoreInput);
 }
 
 startButton.addEventListener("click", startQuiz);
