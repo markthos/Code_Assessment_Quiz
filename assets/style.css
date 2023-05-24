@@ -15,11 +15,13 @@ header {
 .score {
 	font-size: 24px;
 	font-weight: bold;
+	padding-bottom: 50px;
 }
 
 .timer {
 	font-size: 24px;
 	font-weight: bold;
+	padding-bottom: 50px;
 }
 
   

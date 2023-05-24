@@ -36,6 +36,7 @@ var questions = [
 // declare variables for quiz functions
 var currentQuestion = 0;
 var timer = 0;
+var score = 0;
 
 // create function to start quiz with timer at 60 seconds
 function startQuiz() {
@@ -73,6 +74,7 @@ function showQuestion() {
 function submitAnswer() {
     var answer = document.querySelector("input[name='question']:checked").value;
     if (answer == questions[currentQuestion].correctAnswer) {
+        score += 5;
         currentQuestion++;
         if (currentQuestion < questions.length) {
             showQuestion();
