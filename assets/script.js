@@ -97,16 +97,21 @@ function endQuiz() {
     questionContainer.innerHTML = "Quiz is over!";
     startButton.disabled = true;
     submitButton.disabled = true;
+
+    var endContainer = document.getElementById("end-container");
+
     var initialsInput = document.createElement("input");
     initialsInput.type = "text";
     initialsInput.name = "initials";
     initialsInput.placeholder = "Enter your initials";
-    questionContainer.appendChild(initialsInput);
+    endContainer.appendChild(initialsInput);
+
     var scoreInput = document.createElement("input");
     scoreInput.type = "number";
     scoreInput.name = "score";
     scoreInput.placeholder = "Enter your score";
-    questionContainer.appendChild(scoreInput);
+    endContainer.appendChild(scoreInput);
+    
     // Storing score and intials in local storage
     initialsInput.addEventListener("input", function() {
         localStorage.setItem("initials", initialsInput.value);
