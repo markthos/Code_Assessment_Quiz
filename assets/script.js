@@ -46,8 +46,8 @@ function startQuiz() {
         timer--;
         timeContainer.innerHTML = "Time: " + timer;
         if (timer <= 0) {
-            endQuiz();
             clearInterval(countdown);
+            endQuiz();
         }
     }, 1000);
 }
@@ -72,17 +72,24 @@ function showQuestion() {
 }
 
 function submitAnswer() {
-    var answer = document.querySelector("input[name='question']:checked").value;
-    if (answer == questions[currentQuestion].correctAnswer) {
-        score += 5;
-        currentQuestion++;
-        if (currentQuestion < questions.length) {
-            showQuestion();
+    var selectedAnswer = document.querySelector("input[name='question']:checked");
+    if (selectedAnswer) {
+        var answer = selectedAnswer.value;
+        if (answer == questions[currentQuestion].correctAnswer) {
+            score += 5;
+            scoreContainer.innerHTML = "Score: " + score; // Update the score display
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                showQuestion();
+            } else {
+                endQuiz();
+            }
         } else {
-            endQuiz();
+            timer -= 10;
         }
     } else {
-        timer -= 10;
+        // No answer selected, handle the error here
+
     }
 }
 
@@ -100,6 +107,20 @@ function endQuiz() {
     scoreInput.name = "score";
     scoreInput.placeholder = "Enter your score";
     questionContainer.appendChild(scoreInput);
+    // Storing score and intials in local storage
+    initialsInput.addEventListener("input", function() {
+        localStorage.setItem("initials", initialsInput.value);
+    });
+    scoreInput.addEventListener("input", function() {
+        localStorage.setItem("score", scoreInput.value);
+    });
+
+    //Retrieving and displaying stored scoree and initials
+    var storedInitials = localStorage.getItem("initials");
+    var storedScore = localStorage.getItem("score");
+
+    initialsInput.value = storedInitials || ""; // Display stored initials if available
+    scoreInput.value = storedScore || ""; // Display stored score if available
 }
 
 startButton.addEventListener("click", startQuiz);
