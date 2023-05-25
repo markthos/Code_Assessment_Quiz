@@ -8,21 +8,19 @@
     <link rel="stylesheet" type="text/css" href="assets\style.css"/>
 </head>
 <body>
-    <header>
-        <h1>Code Assessment Quiz</h1>
-        <button id="start-button">Start</button>
-
-    </header>
+    <div class="container">
+        <header>
+            <div class ="score">Score: <span id ="score">0</span></div>
+            <h1>Code Assessment Quiz</h1>
+            <div class ="timer">Time: <span id ="time">60</span></div>
+        </header>
+    </div>
     <main>
+        <button id="start-button">Start</button>
         <div id="question-container"></div>
-        <div id="answer-container"></div>
-        <div id="time-container"></div>
-        <div id="score-container"></div>
+        <button id="submit-button">Submit</button>
     </main>
-    // code to start timer and present questions
-    // code to subtract time from clock for incorrect answers
-    // code to end game when all questions are answered or timer reaches 0
-    // code to save intiials and score when game is over
+    <div id="end-container"></div>
     <script src="assets\script.js"></script>
 </body>
 
