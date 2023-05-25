@@ -11,6 +11,11 @@ header {
 	align-items: center;
 	margin-bottom: 20px;
 }
+.high-score {
+	font-size: 24px;
+	font-weight: bold;
+	padding-bottom: 50px;
+}
 
 .score {
 	font-size: 24px;

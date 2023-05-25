@@ -3,6 +3,7 @@ var startButton = document.getElementById("start-button");
 var questionContainer = document.getElementById("question-container");
 var timeContainer = document.getElementById("time");
 var scoreContainer = document.getElementById("score");
+var highScoreContainer = document.getElementById("high-score");
 var submitButton = document.getElementById("submit-button");
 
 // create question objects with content, answers, and correct answers for quiz
@@ -37,12 +38,21 @@ var questions = [
 var currentQuestion = 0;
 var timer = 0;
 var score = 0;
+var high_score = 0;
 var countdown;
+var initialsInput; // define variable for initials input in the global scope
 
 // create function to start quiz with timer at 60 seconds
 function startQuiz() {
     timer = 60;
     showQuestion();
+
+    // Prompt for initials
+    var initials = prompt("Please enter your initials:");
+    if (initials) {
+        initialsInput = initials;
+    }
+
     countdown = setInterval(function() {
         timer--;
         timeContainer.innerHTML = "" + timer;
@@ -103,9 +113,11 @@ function endQuiz() {
 
     var endContainer = document.getElementById("end-container");
 
-    var initialsInput = document.createElement("input");
+    var initials = initialsInput || "";
+    initialsInput = document.createElement("input");
     initialsInput.type = "text";
     initialsInput.name = "initials";
+    initialsInput.value = initials;
     initialsInput.placeholder = "Enter your initials";
     endContainer.appendChild(initialsInput);
 
