@@ -37,14 +37,15 @@ var questions = [
 var currentQuestion = 0;
 var timer = 0;
 var score = 0;
+var countdown;
 
 // create function to start quiz with timer at 60 seconds
 function startQuiz() {
     timer = 60;
     showQuestion();
-    var countdown = setInterval(function() {
+    countdown = setInterval(function() {
         timer--;
-        timeContainer.innerHTML = "Time: " + timer;
+        timeContainer.innerHTML = "" + timer;
         if (timer <= 0) {
             clearInterval(countdown);
             endQuiz();
@@ -77,7 +78,7 @@ function submitAnswer() {
         var answer = selectedAnswer.value;
         if (answer == questions[currentQuestion].correctAnswer) {
             score += 5;
-            scoreContainer.innerHTML = "Score: " + score; // Update the score display
+            scoreContainer.innerHTML = "" + score; // Update the score display
             currentQuestion++;
             if (currentQuestion < questions.length) {
                 showQuestion();
@@ -97,6 +98,8 @@ function endQuiz() {
     questionContainer.innerHTML = "Quiz is over!";
     startButton.disabled = true;
     submitButton.disabled = true;
+
+    clearInterval(countdown);
 
     var endContainer = document.getElementById("end-container");
 
