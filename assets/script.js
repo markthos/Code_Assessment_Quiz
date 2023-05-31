@@ -42,6 +42,8 @@ var countdown;
 // create function to start quiz with timer at 60 seconds
 function startQuiz() {
     timer = 60;
+    //const initials = initialsInput.value;
+    startButton.style.display = "none";
     showQuestion();
     countdown = setInterval(function() {
         timer--;
