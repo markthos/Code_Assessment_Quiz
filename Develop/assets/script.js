@@ -1,7 +1,30 @@
-// Get the submit button and quiz container
+// Get the start button, submit button, quiz container, and high scores container
+const startButton = document.getElementById("start");
 const submitButton = document.getElementById("submit");
-const quizContainer = document.getElementById("quiz-container");
+const quizContainer = document.getElementById("quiz");
+const highScoresContainer = document.getElementById("high-scores-container");
 
+// Define the correct answers for each question
+const correctAnswers = ["a", "b", "c", "a", "b"];
+
+// Define high scores
+let highScores = [];
+
+// Hide the main id="quiz" element until the start button is clicked
+quizContainer.style.display = "none";
+
+// Add event listener to start button
+startButton.addEventListener("click", function () {
+    // Prompt user for initials
+    const initials = prompt("Enter your initials:");
+    // Hide the start button
+    startButton.style.display = "none";
+    // Show the quiz questions one at a time
+    quizContainer.style.display = "block";
+    // Start the timer
+    startTimer();
+
+});
 // Add event listener to submit button
 submitButton.addEventListener("click", function () {
     // Get all the questions
@@ -18,7 +41,7 @@ submitButton.addEventListener("click", function () {
         // Loop through each answer input
         answerInputs.forEach(answerInput => {
             // If the answer input is checked and the value matches the correct answer, increment the number of correct answers
-            if (answerInput.checked && answerInput.value === correctAnswers[index]) {
+            if (answerInput.value === correctAnswers[index]) {
                 numCorrect++;
             }
         });
@@ -27,7 +50,4 @@ submitButton.addEventListener("click", function () {
     // Display the number of correct answers
     alert("You got " + numCorrect + " questions correct!");
 });
-
-// Define the correct answers for each question
-const correctAnswers = ["A", "B", "C", "A", "B"];
 
