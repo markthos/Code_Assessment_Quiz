@@ -13,6 +13,26 @@ let highScores = [];
 // Hide the main id="quiz" element until the start button is clicked
 quizContainer.style.display = "none";
 
+//add start timer function
+function startTimer() {
+    // Set the time
+    let time = 60;
+    // Set the timer interval
+    let timerInterval = setInterval(function () {
+        // Decrement the time
+        time--;
+        // Display the time
+        document.getElementById("time").textContent = time;
+        // If the time is less than or equal to 0, clear the interval and display the high scores
+        if (time <= 0) {
+            clearInterval(timerInterval);
+            quizContainer.style.display = "none";
+            highScoresContainer.style.display = "block";
+        }
+    }, 1000);
+}
+
+
 // Add event listener to start button
 startButton.addEventListener("click", function () {
     // Prompt user for initials
@@ -41,7 +61,7 @@ submitButton.addEventListener("click", function () {
         // Loop through each answer input
         answerInputs.forEach(answerInput => {
             // If the answer input is checked and the value matches the correct answer, increment the number of correct answers
-            if (answerInput.value === correctAnswers[index]) {
+            if (answerInput.checked && answerInput.value === correctAnswers[index]) {
                 numCorrect++;
             }
         });
