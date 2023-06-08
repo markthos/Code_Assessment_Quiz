@@ -4,6 +4,24 @@ var questionContainer = document.getElementById("question-container");
 var timeContainer = document.getElementById("time");
 var scoreContainer = document.getElementById("score");
 var submitButton = document.getElementById("submit-button");
+var restartButton = document.getElementById("restart-button");
+var highScoresContainer = document.getElementById("high-scores-container");
+
+
+
+// hide submit button until quiz starts
+submitButton.style.display = "none";
+
+// hide restart button until quiz ends
+restartButton.style.display = "none";
+
+// retrieve high scores from local storage and display them in high scores container
+var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+highScoresContainer.innerHTML = highScores.map(score => {
+    return `<li>${score.name} - ${score.score}</li>`;
+}).join("");
+
+
 
 // create question objects with content, answers, and correct answers for quiz
 var questions = [
@@ -43,6 +61,7 @@ var countdown;
 function startQuiz() {
     timer = 60;
     startButton.style.display = "none";
+    submitButton.style.display = "block";
     showQuestion();
     countdown = setInterval(function() {
         timer--;
@@ -99,6 +118,9 @@ function endQuiz() {
     questionContainer.innerHTML = "Quiz is over!";
     startButton.disabled = true;
     submitButton.disabled = true;
+    startButton.style.display = "none";
+    submitButton.style.display = "none";
+    restartButton.style.display = "block";
 
     clearInterval(countdown);
 
@@ -131,6 +153,10 @@ function endQuiz() {
     initialsInput.value = storedInitials || ""; // Display stored initials if available
     scoreInput.value = storedScore || ""; // Display stored score if available
 }
+restartButton.addEventListener("click", function() {
+    location.reload();
+});
 
 startButton.addEventListener("click", startQuiz);
 submitButton.addEventListener("click", submitAnswer);
+
