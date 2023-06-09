@@ -15,13 +15,6 @@ submitButton.style.display = "none";
 // hide restart button until quiz ends
 restartButton.style.display = "none";
 
-// retrieve high scores from local storage and display them in high scores container
-var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
-highScoresContainer.innerHTML = highScores.map(score => {
-    return `<li>${score.name} - ${score.score}</li>`;
-}).join("");
-
-
 
 // create question objects with content, answers, and correct answers for quiz
 var questions = [
@@ -56,6 +49,7 @@ var currentQuestion = 0;
 var timer = 0;
 var score = 0;
 var countdown;
+var highScores = [];
 
 // create function to start quiz with timer at 60 seconds
 function startQuiz() {
@@ -107,6 +101,14 @@ function submitAnswer() {
             }
         } else {
             timer -= 10;
+            score += 0;
+            scoreContainer.innerHTML = "" + score; // Update the score display
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                showQuestion();
+            } else {
+                endQuiz();
+            }
         }
     } else {
         // No answer selected, handle the error here
@@ -154,6 +156,13 @@ function endQuiz() {
     scoreInput.value = storedScore || ""; // Display stored score if available
 }
 restartButton.addEventListener("click", function() {
+    // compare score to high score
+    var storedScore = localStorage.getItem("score");
+    var storedInitials = localStorage.getItem("initials");
+    if (storedScore > highScore) {
+        highScore.innerHTML = storedInitials + " - " + storedScore;
+    }
+    // reload page to start quiz over
     location.reload();
 });
 
