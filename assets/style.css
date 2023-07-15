@@ -9,6 +9,11 @@
 	--metallic-gold: #bc9b6a;
 	--founders-rock: #2d637f;
 }
+
+body {
+	overflow: hidden;
+}
+
 a {
 	background-size: 200% 100%;
 	background-position: -100%;
@@ -44,6 +49,7 @@ a:hover::before {
 .high-score {
 	font-size: 24px;
 	font-weight: bold;
+	padding-left: 10px;
 	padding-bottom: 50px;
 }
 
@@ -53,7 +59,7 @@ a:hover::before {
 
 .timer {
 	color: var(--metallic-gold);
-	padding-right: 30px;
+	padding-right: 10px;
 }
 
 header{
