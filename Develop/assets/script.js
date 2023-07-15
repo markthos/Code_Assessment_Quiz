@@ -57,7 +57,6 @@ submitButton.addEventListener("click", function () {
     questions.forEach((question, index) => {
         // Get the answer inputs for the current question
         const answerInputs = question.querySelectorAll(".answer-input");
-        console.log(answerInputs)
         // Loop through each answer input
         answerInputs.forEach(answerInput => {
             // If the answer input is checked and the value matches the correct answer, increment the number of correct answers
