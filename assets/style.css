@@ -53,6 +53,7 @@ a:hover::before {
 
 .timer {
 	color: var(--metallic-gold);
+	padding-right: 30px;
 }
 
 header{
