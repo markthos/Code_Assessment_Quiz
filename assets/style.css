@@ -7,7 +7,40 @@
 	--berkeley-blue: #003262;
 	--california-gold: #fdb515;
 	--metallic-gold: #bc9b6a;
+	--founders-rock: #2d637f;
 }
+a {
+	background-size: 200% 100%;
+	background-position: -100%;
+	display: inline-block;
+	padding: 5px 0;
+	position: relative;
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: var(--metallic-gold);
+	transition: all 0.3s ease-in-out;
+}
+
+a:before{
+	content: '';
+	background: var(--metallic-gold);
+	display: block;
+	position: absolute;
+	bottom: -3px;
+	left: 0;
+	width: 0;
+	height: 3px;
+	transition: all 0.3s ease-in-out;
+}
+
+a:hover {
+	background-position: 0;
+}
+
+a:hover::before {
+	width: 100%;
+}
+
 .high-score {
 	font-size: 24px;
 	font-weight: bold;
@@ -26,6 +59,7 @@ header{
 	background-color: var(--berkeley-blue);
 	padding: 20px 0;
 	margin: 0;
+	width: 100vw;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -48,6 +82,7 @@ main {
 	margin: 0;
 	border: 5px solid white;
 	border-radius: 10px;
+	box-shadow: 0 0 10px 1px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -64,9 +99,21 @@ main {
 	color: black;
 	border: 1px solid white;
 	border-radius: 5px;
-	padding: 10px;
-	margin: 10px;
+	padding: 5px 10px;
+	margin: 5px 10px;
 	font-size: 1rem;
 }
 
+.btn-grid {
+	display: grid;
+	grid-template-columns: repeat(2, auto);
+	grid-gap: 10px;
+	margin: 20px 0;
+}
+
+.btn:hover {
+	border-color: var(--founders-rock);
+	color: var(--berkeley-blue);
+	transform: scale(1.15);
+}
   
