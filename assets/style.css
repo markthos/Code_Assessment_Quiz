@@ -8,6 +8,11 @@
 	--california-gold: #fdb515;
 	--metallic-gold: #bc9b6a;
 }
+.high-score {
+	font-size: 24px;
+	font-weight: bold;
+	padding-bottom: 50px;
+}
 
 .high-scores {
 	color: var(--metallic-gold);
