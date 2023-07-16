@@ -122,5 +122,15 @@ main {
 	border-color: var(--founders-rock);
 	color: var(--berkeley-blue);
 	transform: scale(1.15);
+	transition: transform 0.3s ease-in-out;
 }
-  
+
+.controls {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.hide {
+	display: none;
+}
