@@ -104,19 +104,18 @@ function handleSubmit(event) {
     }
 }
 
-// ...
-
-
-function checkAnswer(selectedAnswer) {
-    const correctAnswer = quizQuestions[currentQuestionIndex].correctAnswer;
-    if (selectedAnswer === correctAnswer) {
-        score++;
+// Check if the selected answer is correct and remove time from the timer if incorrect while keeping user on the same question until they select the correct answer. The score at the end of the quiz will be the number of seconds remaining on the timer.
+function checkAnswer(answer) {
+    const questionData = quizQuestions[currentQuestionIndex];
+    if (answer === questionData.correctAnswer) {
+        score = timeLeft;
+        currentQuestionIndex++;
+        showQuestion(currentQuestionIndex);
     } else {
-        timeLeft -= 10; // Penalty for incorrect answer
+        timeLeft -= 10;
     }
-    currentQuestionIndex++;
-    showQuestion(currentQuestionIndex);
 }
+
 
 function endQuiz() {
     clearInterval(timer);
@@ -139,13 +138,42 @@ function endQuiz() {
 }
 
 function saveHighscore(initials, score) {
-    // Implement local storage logic here
-    
+    // Check if highscoreData exists in local storage and compare it with current score
+    // If current score is higher, update highscoreData
+    // Save highscoreData to local storage
+    const storedHighscoreData = JSON.parse(localStorage.getItem("highscoreData"));
+    let highscoreData = storedHighscoreData || { initials: "", score: 0 };
+    if (score > highscoreData.score) {
+        highscoreData = { initials, score };
+        localStorage.setItem("highscoreData", JSON.stringify(highscoreData));
+    }
+    // Update highscoreValue and highscoreInitials based on highscoreData
+    highscoreValue.textContent = highscoreData.score;
+    highscoreInitials.textContent = highscoreData.initials;
+
+    // Remove initials input field and save button
+    document.getElementById("quiz").removeChild(initialsInput);
+    document.getElementById("quiz").removeChild(saveButton);
+
+    // Display start button
+    startButton.style.display = "block";
+
+    // Reset quiz
+    currentQuestionIndex = 0;
+    timeLeft = 60;
+    score = 0;
+
+    // Load highscore
+    loadHighscore();
 }
 
 function loadHighscore() {
     // Implement local storage logic here to load highscore
-    // Update highscoreValue and highscoreInitials based on highscoreData
+    const storedHighscoreData = JSON.parse(localStorage.getItem("highscoreData"));
+    if (storedHighscoreData) {
+        highscoreValue.textContent = storedHighscoreData.score;
+        highscoreInitials.textContent = storedHighscoreData.initials;
+    }
 }
 
 // Load highscore when the page loads
