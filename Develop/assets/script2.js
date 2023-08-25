@@ -75,17 +75,37 @@ function startTimer() {
     }, 1000);
 }
 
+// ...
+
 function showQuestion(index) {
     if (index < quizQuestions.length) {
         const questionData = quizQuestions[index];
         questionElement.textContent = questionData.question;
         answerElements.forEach((answerElement, i) => {
             answerElement.textContent = questionData.answers[i];
+            answerElement.parentNode.querySelector("input").value = questionData.answers[i];
         });
+
+        // Remove previous event listener to avoid multiple bindings
+        questionForm.removeEventListener("submit", handleSubmit);
+
+        // Add event listener to form submission
+        questionForm.addEventListener("submit", handleSubmit);
     } else {
         endQuiz();
     }
 }
+
+function handleSubmit(event) {
+    event.preventDefault();
+    const selectedAnswer = document.querySelector("input[name='answer']:checked");
+    if (selectedAnswer) {
+        checkAnswer(selectedAnswer.value);
+    }
+}
+
+// ...
+
 
 function checkAnswer(selectedAnswer) {
     const correctAnswer = quizQuestions[currentQuestionIndex].correctAnswer;
