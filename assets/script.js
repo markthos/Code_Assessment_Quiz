@@ -50,7 +50,15 @@ const answerElements = document.querySelectorAll("span[id^='answer']");
 const highscoreValue = document.getElementById("highscoreValue");
 const highscoreInitials = document.getElementById("highscoreInitials");
 const timerValue = document.getElementById("timerValue");
+const saveScoreButton = document.getElementById("saveScoreButton");
 
+saveScoreButton.addEventListener("click", function() {
+    const initials = document.getElementById("initials").value;
+    saveHighscore(initials, score);
+
+    // Redirect to the beginning of the quiz
+    location.reload();
+});
 let currentQuestionIndex = 0;
 let timeLeft = 60;
 let timerInterval;
@@ -118,6 +126,9 @@ function checkAnswer(answer) {
     }
 }
 
+
+
+
 function saveHighscore(initials, score) {
     // Check if highscoreData exists in local storage and compare it with current score
     // If current score is higher, update highscoreData
@@ -132,11 +143,6 @@ function saveHighscore(initials, score) {
     highscoreValue.textContent = highscoreData.score;
     highscoreInitials.textContent = highscoreData.initials;
 
-    // Remove initials input field and save button
-    document.getElementById("quiz").removeChild(initialsInput);
-    document.getElementById("quiz").removeChild(saveButton);
-
-
 }
 
 function endQuiz() {
@@ -144,22 +150,14 @@ function endQuiz() {
     questionForm.style.display = "none";
     highscoreValue.textContent = score;
     highscoreInitials.textContent = "-";
-    // Display input field for initials and save button
-    const initialsInput = document.createElement("input");
-    initialsInput.placeholder = "Enter your initials";
-    const saveButton = document.createElement("button");
-    saveButton.textContent = "Save";
-    saveButton.addEventListener("click", function() {
-        location.reload();
-        const initials = initialsInput.value;
-        if (initials) {
-            saveHighscore(initials, score);
-        }    
-    });
-    document.getElementById("quiz").appendChild(initialsInput);
-    document.getElementById("quiz").appendChild(saveButton);
-    
+
+    // Update the final score in the saveScoreContainer
+    document.getElementById("finalScoreValue").textContent = score;
+
+    // Show the saveScoreContainer
+    document.getElementById("saveScoreContainer").style.display = "block";
 }
+
 
 
 
