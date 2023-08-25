@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <style>
+        /* Add your styles here */
+    </style>
+</head>
+<body>
+    <header>
+        <div id="highscore">Highscore: <span id="highscoreValue">0</span> by <span id="highscoreInitials">-</span></div>
+        <div id="timer">Timer: <span id="timerValue">0</span> sec</div>
+    </header>
+    <div id="quiz">
+        <h1>Quiz Title</h1>
+        <p>Quiz description goes here.</p>
+        <button id="startBtn">Start Quiz</button>
+        <form id="questionForm" style="display: none;">
+            <h2>Question 1</h2>
+            <label><input type="radio" name="q1" value="option1"> Option 1</label>
+            <label><input type="radio" name="q1" value="option2"> Option 2</label>
+            <!-- Repeat the above pattern for other questions -->
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script src="assets\script2.js"></script> 
+        // JavaScript code to handle quiz logic, timer, and local storage
+        // You can add your JavaScript code here
+</body>
+</html>
