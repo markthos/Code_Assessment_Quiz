@@ -7,7 +7,7 @@
 ## Description
 
 A quick code assesment quiz to test your abilities in Javascript.
-
+<img src="./assets/Code-Assesment-Quiz.png">
 
 ## Table of Contents (if applicable)
 
@@ -33,7 +33,7 @@ A quick code assesment quiz to test your abilities in Javascript.
 
 ## Usage
 
-Follow the link to the github page and begin by clicking the start button.  you will have 60 seconds to answer the questions about javascript syntax to the best of your ability.  Each missed answer will shave 10 seconds off of your time.  The quiz will end when you have completed all the questions correctly or when the timer runs out. Afterwards you can submit your score and initials to see if you have beat the high score on your local device.
+Follow the [Code Assesment Quiz](https://markthos.github.io/Code_Assessment_Quiz/) to the github page and begin by clicking the start button.  you will have 60 seconds to answer the questions about javascript syntax to the best of your ability.  Each missed answer will shave 10 seconds off of your time.  The quiz will end when you have completed all the questions correctly or when the timer runs out. Afterwards you can submit your score and initials to see if you have beat the high score on your local device.
 
 ## License
 
