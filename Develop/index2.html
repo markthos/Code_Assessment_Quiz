@@ -18,16 +18,16 @@
         <p>Quiz description goes here.</p>
         <button id="startBtn">Start Quiz</button>
         <form id="questionForm" style="display: none;">
-            <h2>Question 1</h2>
-            <label><input type="radio" name="q1" value="option1"> Option 1</label>
-            <label><input type="radio" name="q1" value="option2"> Option 2</label>
-            <!-- Repeat the above pattern for other questions -->
+            <h2 id="question">Question</h2>
+            <label><input type="radio" name="answer" value="option1"> <span id="answer1">Option 1</span></label>
+            <label><input type="radio" name="answer" value="option2"> <span id="answer2">Option 2</span></label>
+            <label><input type="radio" name="answer" value="option3"> <span id="answer3">Option 3</span></label>
+            <label><input type="radio" name="answer" value="option4"> <span id="answer4">Option 4</span></label>
             <button type="submit">Submit</button>
         </form>
     </div>
 
-    <script src="assets\script2.js"></script> 
-        // JavaScript code to handle quiz logic, timer, and local storage
-        // You can add your JavaScript code here
+    // javascript script2.js in assets hookup
+    <script src="assets/script2.js"></script>
 </body>
 </html>
