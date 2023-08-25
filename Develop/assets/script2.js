@@ -55,6 +55,8 @@ let currentQuestionIndex = 0;
 let timeLeft = 60;
 let timerInterval;
 let score = 0;
+let initialsInput;
+let saveButton;
 
 startButton.addEventListener("click", startQuiz);
 
@@ -116,27 +118,6 @@ function checkAnswer(answer) {
     }
 }
 
-
-function endQuiz() {
-    clearInterval(timer);
-    questionForm.style.display = "none";
-    highscoreValue.textContent = score;
-    highscoreInitials.textContent = "-";
-    // Display input field for initials and save button
-    const initialsInput = document.createElement("input");
-    initialsInput.placeholder = "Enter your initials";
-    const saveButton = document.createElement("button");
-    saveButton.textContent = "Save";
-    saveButton.addEventListener("click", function() {
-        const initials = initialsInput.value;
-        if (initials) {
-            saveHighscore(initials, score);
-        }
-    });
-    document.getElementById("quiz").appendChild(initialsInput);
-    document.getElementById("quiz").appendChild(saveButton);
-}
-
 function saveHighscore(initials, score) {
     // Check if highscoreData exists in local storage and compare it with current score
     // If current score is higher, update highscoreData
@@ -155,17 +136,32 @@ function saveHighscore(initials, score) {
     document.getElementById("quiz").removeChild(initialsInput);
     document.getElementById("quiz").removeChild(saveButton);
 
-    // Display start button
-    startButton.style.display = "block";
 
-    // Reset quiz
-    currentQuestionIndex = 0;
-    timeLeft = 60;
-    score = 0;
-
-    // Load highscore
-    loadHighscore();
 }
+
+function endQuiz() {
+    clearInterval(timer);
+    questionForm.style.display = "none";
+    highscoreValue.textContent = score;
+    highscoreInitials.textContent = "-";
+    // Display input field for initials and save button
+    const initialsInput = document.createElement("input");
+    initialsInput.placeholder = "Enter your initials";
+    const saveButton = document.createElement("button");
+    saveButton.textContent = "Save";
+    saveButton.addEventListener("click", function() {
+        location.reload();
+        const initials = initialsInput.value;
+        if (initials) {
+            saveHighscore(initials, score);
+        }    
+    });
+    document.getElementById("quiz").appendChild(initialsInput);
+    document.getElementById("quiz").appendChild(saveButton);
+    
+}
+
+
 
 function loadHighscore() {
     // Implement local storage logic here to load highscore
