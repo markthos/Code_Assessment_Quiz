@@ -1,6 +1,8 @@
-*::before, *::after {
-	box-sizing: border-box;
-	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
 }
 
 :root {
@@ -11,126 +13,117 @@
 }
 
 body {
-	overflow: hidden;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: var(--california-gold);
 }
 
-a {
-	background-size: 200% 100%;
-	background-position: -100%;
-	display: inline-block;
-	padding: 5px 0;
-	position: relative;
-	-webkit-background-clip: text;
-	background-clip: text;
-	-webkit-text-fill-color: var(--metallic-gold);
-	transition: all 0.3s ease-in-out;
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--berkeley-blue);
+    color: var(--metallic-gold);
+    padding: 10px 20px;
 }
 
-a:before{
-	content: '';
-	background: var(--metallic-gold);
-	display: block;
-	position: absolute;
-	bottom: -3px;
-	left: 0;
-	width: 0;
-	height: 3px;
-	transition: all 0.3s ease-in-out;
+#highscore {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 20px;
 }
 
-a:hover {
-	background-position: 0;
+#timer {
+    font-size: 18px;
+    font-weight: bold;
 }
 
-a:hover::before {
-	width: 100%;
+#quiz {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px; /* Set a maximum width to control responsiveness */
+    text-align: center;
 }
 
-.high-score {
-	font-size: 24px;
-	font-weight: bold;
-	padding-left: 10px;
-	padding-bottom: 50px;
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: var(--berkeley-blue);
 }
 
-.high-scores {
-	color: var(--metallic-gold);
+p {
+    font-size: 18px;
+    color: var(--berkeley-blue);
+    margin-bottom: 20px;
 }
 
-.timer {
-	color: var(--metallic-gold);
-	padding-right: 10px;
+#startBtn {
+    background-color: var(--berkeley-blue);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-header{
-	background-color: var(--berkeley-blue);
-	padding: 20px 0;
-	margin: 0;
-	width: 100vw;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+#startBtn:hover {
+    background-color: var(--founders-rock);
+    color: var(--metallic-gold);
+    transition: background-color 0.3s ease;
 }
 
-main {
-	background-color: var(--california-gold);
-	padding: 0;
-	margin: 0;
-	display: flex;
-	width: 100vw;
-	height: 100vh;
-	justify-content: center;
-	align-items: center;
-}
-
-#question-container {
-	background-color: var(--berkeley-blue);
-	padding: 20px;
-	margin: 0;
-	border: 5px solid white;
-	border-radius: 10px;
-	box-shadow: 0 0 10px 1px;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+#questionForm {
+    display: none;
+    margin-top: 20px;
 }
 
 #question {
-	color: var(--california-gold);
-	font-size: 1.5rem;
+    font-size: 20px;
+    color: #003262;
+    margin-bottom: 10px;
 }
 
-.btn {
-	background-color: var(--metallic-gold);
-	color: black;
-	border: 1px solid white;
-	border-radius: 5px;
-	padding: 5px 10px;
-	margin: 5px 10px;
-	font-size: 1rem;
+label {
+    display: inline-block;
+    width: calc(50% - 10px); /* Two options per row with spacing */
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.btn-grid {
-	display: grid;
-	grid-template-columns: repeat(2, auto);
-	grid-gap: 10px;
-	margin: 20px 0;
+label:hover {
+    background-color: var(--founders-rock);
+    color: var(--metallic-gold);
+    transition: background-color 0.3s ease;
 }
 
-.btn:hover {
-	border-color: var(--founders-rock);
-	color: var(--berkeley-blue);
-	transform: scale(1.15);
-	transition: transform 0.3s ease-in-out;
+
+input[type="radio"] {
+    margin-right: 10px;
 }
 
-.controls {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+button[type="submit"] {
+    background-color: var(--berkeley-blue);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.hide {
-	display: none;
+button[type="submit"]:hover {
+    background-color: var(--founders-rock);
+    color: var(--metallic-gold);
+    transition: background-color 0.3s ease;
 }
